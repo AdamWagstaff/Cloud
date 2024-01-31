@@ -40,29 +40,40 @@ The first section documents how to create the site. The second section documents
 
 ## Guide
 
-**Step 1.**
+**Step 1. Create DynamoDB Table:**
+   * Go to DynamoDB console.
+   * Create a table named "posts" with a primary key "id" (string).
+   * Define columns: id, status, text, url, voice.
+![image](https://github.com/AdamWagstaff/Cloud/assets/137490172/ff54bfe7-ff2e-407c-8f90-3f8701d6f6b0)
 
-Create an S3 bucket. Using the Amazon S3 console, click Create Bucket. Use a unique name ![image](https://github.com/AdamWagstaff/Cloud/assets/137490172/25a35410-d2c3-43bf-a7d1-44aab08de681) . 
 
-**Step 2.**
+**Step 2. Create S3 Bucket:**
+   * Go to S3 console.
+   * Create a new bucket with a globally unique name to store our audio files.
+   * Configure bucket settings for public access.
+![image](https://github.com/AdamWagstaff/Cloud/assets/137490172/1b1cfdb8-9bb8-4196-b5e4-fbf67fa4fae9)
 
-Create a DynamoDB table. 
+**Step 3. Create SNS Topic:**
+   * Go to SNS console.
+   * Create a topic named "newAudioTopic"
 
-**Step 3.**
+**Step 4. Create IAM Role:**
+   * Go to IAM console.
+   * Create a policy with necessary permissions for Polly, S3, DynamoDB, and SNS.
+   * Create a role, assign it to AWS Lambda service, and attach the created policy.
+![image](https://github.com/AdamWagstaff/Cloud/assets/137490172/671bc8de-7073-4ac8-82de-f443b545dbfb)
 
-Create an SNS Topic.
 
-**Step 4.**
+**Step 5. Create "New Item" Lambda Function:**
+   * Go to Lambda console.
+   * Create a new function named "newTextItem-function" using Python 2.7 runtime.
+   * Set environment variables for SNS_TOPIC and DB_TABLE_NAME.
+   * Test the function with input data.
 
-Create an IAM role.
-
-**Step 5.**
-
-Create "New Item" Lambda Function.
-
-**Step 6.**
-
-Create "Text-to-Audio" Lambda Function.
+**Step 6. Create "Convert Text to Audio" Lambda Function:**
+   * Create a new function named "convertToSpeech-function" using Python 2.7.
+   * Set environment variables for DB_TABLE_NAME and BUCKET_NAME.
+   * Set the SNS trigger using the "newAudioTopic" topic.
 
 **Step 7.**
 
@@ -72,9 +83,14 @@ Create "Get Item" Lambda Function.
 
 Expose Lambda function to RESTful web service.
 
-**Step 9.**
+**Step 9. Create Static Website**
 
-Create User Interface.
+   * Download the web page package. https://s3.amazonaws.com/aws-bigdata-blog/artifacts/ai-text-to-speech/text-to-speech-demo.zip
+   * Modify the script.js file with the API Gateway URL.
+   * Create a new S3 bucket with a uniquw name for hosting the web page.
+   * Upload html, css, and js files to the S3 bucket.
+
+![image](https://github.com/AdamWagstaff/Cloud/assets/137490172/c17cf1b8-40b6-4381-af51-7c0210141893)
 
 
 
