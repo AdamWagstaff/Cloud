@@ -8,6 +8,13 @@ The first section documents how to create the site. The second section documents
 ## The Architecture
 ![image](https://github.com/AdamWagstaff/Cloud/assets/137490172/7cf4e115-6174-4f91-ac03-91a7be83cd97)
 
+Before we get into the steps of building this solution. Let's break down each service we will be using. 
+
+### Amazon S3
+We will be creating a static website to host this application. As the structure of the website will remain static and the website is small, there is no need to provision more, when we can save money using a static S3 website.
+
+### API Gateway
+
 **Step 1.**
 
 Create an S3 bucket. Using the Amazon S3 console, click Create Bucket. Use a unique name ![image](https://github.com/AdamWagstaff/Cloud/assets/137490172/25a35410-d2c3-43bf-a7d1-44aab08de681) . 
