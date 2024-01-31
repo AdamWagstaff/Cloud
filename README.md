@@ -3,7 +3,6 @@
 # Demo 1 - Text To Speech Conversion Tool
 This demo showcases a step by step guide to create simple static website application using S3, API Gateway, Lambda, DynamoDB, SNS, and Polly on AWS.
 
-The first section documents how to create the site. The second section documents error handling and testing.
 
 ## The Architecture
 ![image](https://github.com/AdamWagstaff/Cloud/assets/137490172/7cf4e115-6174-4f91-ac03-91a7be83cd97)
@@ -75,19 +74,24 @@ The first section documents how to create the site. The second section documents
    * Set environment variables for DB_TABLE_NAME and BUCKET_NAME.
    * Set the SNS trigger using the "newAudioTopic" topic.
 
-**Step 7.**
+**Step 7. Create "Get Item" Lambda Function:**
+   * Create a new function named "retrieveItem" using Python 2.7.
+   * Set environment variable for DB_TABLE_NAME.
 
-Create "Get Item" Lambda Function.
+**Step 8. Expose Lambda Functions with API Gateway:**
+   * Go to API Gateway console.
+   * Create a new API named "myAPI"
+   * Create two methods: POST for "New Item" and GET for "Get Item"
+   * Enable CORS for cross-origin requests.
 
-**Step 8.**
+**Step 9. Deploy API Gateway:**
+   * Deploy the API (e.g., as "dev").
+   * Get the API URL for later use.
 
-Expose Lambda function to RESTful web service.
-
-**Step 9. Create Static Website**
-
+**Step 10. Create Static Website Interface:**
    * Download the web page package. https://s3.amazonaws.com/aws-bigdata-blog/artifacts/ai-text-to-speech/text-to-speech-demo.zip
    * Modify the script.js file with the API Gateway URL.
-   * Create a new S3 bucket with a uniquw name for hosting the web page.
+   * Create a new S3 bucket for hosting the web page.
    * Upload html, css, and js files to the S3 bucket.
 
 ![image](https://github.com/AdamWagstaff/Cloud/assets/137490172/c17cf1b8-40b6-4381-af51-7c0210141893)
