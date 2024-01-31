@@ -37,7 +37,6 @@ The first section documents how to create the site. The second section documents
 **8. DynamoDB Dexterity**
    * Empowered by DynamoDB, the "Get Item" Lambda function navigates through the stored data, assembling a comprehensive snapshot of the item, including the reference to the S3 bucket.
 
-Before we get into the steps of building this solution. Let's break down each service we will be using. 
 
 ## Guide
 
